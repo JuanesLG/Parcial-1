@@ -1,8 +1,8 @@
 # Parcial-1
 
-'''python
+```python
 
 print(hola mundo)
 
 
-'''
+```
