@@ -90,7 +90,7 @@ while True:
                       , "Asignatura 03:", estudiantes[grupo]["nombres"][orden2]["asignatura 03"], "\n")
                 break
         else:
-            print(f'El estudiante {orden2} no se encuentra registrado en ningún grupo.')
+            print(f'El estudiante {orden2} no se encuentra registrado en ningún grupo. Si desea agregarlo puede digitar el número 5. ')
 
     elif orden1 == 2:
         orden14 = input("Asignaturas que cursa el: ")
