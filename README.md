@@ -144,25 +144,40 @@ while True:
             elif orden19 == "si":
                 orden19 = input("¿Cuál es su código? ")
                 orden20 = input("¿Cuál es su asignatura 01? ")
+                if orden20.isalpha():
+                  print("¡Bien hecho! Has ingresado la primera asignatura!")
+                else:
+                   print("Carácter inválido. Por favor, ingrese solo letras.")
+                   break
                 orden21 = input(f'¿Cuál es su nota en {orden20}? ')
                 orden22 = input("¿Cuál es su asignatura 02? ")
+                if orden22.isalpha():
+                  print("¡Bien hecho! Has ingresado la segunda asignatura!")
+                else:
+                   print("Carácter inválido. Por favor, ingrese solo letras.")
+                   break
                 orden23 = input(f'¿Cuál es su nota en {orden22}? ')
                 orden24 = input("¿Cuál es su asignatura 03? ")
+                if orden24.isalpha():
+                  print("¡Bien hecho! Has ingresado la tercera asignatura!")
+                else:
+                   print("Carácter inválido. Por favor, ingrese solo letras.")
+                   break
                 orden25 = input(f'¿Cuál es su nota en {orden24}? ')
 
                 grupo = input("¿A qué grupo pertenece el estudiante? (grupo_01, grupo_02, grupo_03 o grupo_04): ")
                 grupo = grupo.lower()
 
                 if grupo in estudiantes:
-                    estudiantes[grupo]["nombres"][orden18] = {"código": orden19, "asignatura 01": orden20,
+                  estudiantes[grupo]["nombres"][orden18] = {"código": orden19, "asignatura 01": orden20,
                                                                "nota asignatura 01": orden21,
                                                                "asignatura 02": orden22, "nota asignatura 02": orden23,
                                                                "asignatura 03": orden24, "nota asignatura 03": orden25}
                 else:
-                    print(f'El grupo {grupo} no existe.')
+                   print(f'El grupo {grupo} no existe.')
     elif orden1 == 6:
         break
     else:
         print("Error: Por favor, introduzca un número de opción válido (1-6).")
 
-```
+'''
