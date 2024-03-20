@@ -18,58 +18,63 @@ print(
     6 = Finalizar'''
 )
 
-estudiantes = {
-    "grupo_01": {
-        "nombres": {
-            "juan castellanos": {"código": 101, "asignatura 01": "cálculo i", "nota asignatura 01": 2.3,
-                                 "asignatura 02": "física", "nota asignatura 02": 4.1,
-                                 "asignatura 03": "programación de computadores", "nota asignatura 03": 3.5},
-            "angel riveros": {"código": 102, "asignatura 01": "cálculo ii", "nota asignatura 01": 3.0,
-                              "asignatura 02": "materiales", "nota asignatura 02": 3.2,
-                              "asignatura 03": "problemas ambientales", "nota asignatura 03": 4.9},
-            "leo ayala": {"código": 103, "asignatura 01": "cálculo iii", "nota asignatura 01": 3.4,
-                          "asignatura 02": "fundamentos de química", "nota asignatura 02": 4.0,
-                          "asignatura 03": "gastronomía i", "nota asignatura 03": 4.7}
+estudiantes={
+    "G01": {
+        "JUAN CASTELLANOS PEREZ": {
+            "Asignaturas": 
+                {
+                    4.5: "CALCULO 1",
+                    4.1: "FISICA 1",
+                    3.1: "PROGRAMACION DE COMPUTADORES"
+                }
+            
+        },
+        "ANGEL RIVEROS AMAYA": {
+            "Asignaturas": 
+                {
+                    4.1:"CALCULO 2" ,
+                    3.8:"ECOLOGIA" ,
+                    2.9: "FUNDAMENTOS DE QUIMICA"
+                }
+            
+        },
+        "LEO AYALA VERGARA": {
+            "Asignaturas": 
+                {
+                    3.8: "MATERIALES",
+                    4.0: "ASTRONOMIA 1",
+                    3.0: "CALCULO 2"
+                }
+            
         }
     },
-    "grupo_02": {
-        "nombres": {
-            "damian montañez": {"código": 201, "asignatura 01": "cálculo iii", "nota asignatura 01": 1.9,
-                                "asignatura 02": "física", "nota asignatura 02": 3.1,
-                                "asignatura 03": "dibujo básico", "nota asignatura 03": 3.0},
-            "alejandra rodriguez": {"código": 202, "asignatura 01": "cálculo i", "nota asignatura 01": 3.0,
-                                    "asignatura 02": "fundamentos de química", "nota asignatura 02": 2.8,
-                                    "asignatura 03": "ecología", "nota asignatura 03": 4.3},
-            "veronica lopez": {"código": 203, "asignatura 01": "matemáticas básicas", "nota asignatura 01": 3.9,
-                               "asignatura 02": "álgebra lineal", "nota asignatura 02": 5.0,
-                               "asignatura 03": "gastronomía ii", "nota asignatura 03": 4.0}
-        }
-    },
-    "grupo_03": {
-        "nombres": {
-            "diego camargo": {"código": 301, "asignatura 01": "cálculo ii", "nota asignatura 01": 3.8,
-                               "asignatura 02": "programación de computadores", "nota asignatura 02": 2.1,
-                               "asignatura 03": "problemas ambientales", "nota asignatura 03": 4.8},
-            "paula montenegro": {"código": 302, "asignatura 01": "matemáticas básicas",
-                                  "nota asignatura 01": 5.0, "asignatura 02": "álgebra lineal",
-                                  "nota asignatura 02": 3.9, "asignatura 03": "dibujo básico",
-                                  "nota asignatura 03": 3.0},
-            "dilan velasquez": {"código": 303, "asignatura 01": "cálculo i", "nota asignatura 01": 3.1,
-                                "asignatura 02": "materiales", "nota asignatura 02": 3.5,
-                                "asignatura 03": "ecología", "nota asignatura 03": 4.0}
-        }
-    },
-    "grupo_04": {
-        "nombres": {
-            "maria olmos": {"código": 401, "asignatura 01": "cálculo iii", "nota asignatura 01": 2.0,
-                            "asignatura 02": "física", "nota asignatura 02": 2.9,
-                            "asignatura 03": "astronomía i", "nota asignatura 03": 3.4},
-            "francisca suarez": {"código": 402, "asignatura 01": "cálculo i", "nota asignatura 01": 3.4,
-                                 "asignatura 02": "programación de computadores", "nota asignatura 02": 4.9,
-                                 "asignatura 03": "gastronomía i", "nota asignatura 03": 3.7},
-            "valentina gomez": {"código": 403, "asignatura 01": "cálculo i", "nota asignatura 01": 3.2,
-                                "asignatura 02": "fundamentos de química", "nota asignatura 02": 4.5,
-                                "asignatura 03": "dibujo básico", "nota asignatura 03": 4.1}
+    "G02": {
+        "DAMIAN MONTA\u00c3\u2018AZ ROMERO": {
+            "Asignaturas": 
+                {
+                   2.9: "CALCULO 3",
+                   3.1 : "PROGRAMACION DE COMPUTADORES",
+                   4.0: "DIBUJO BASICO"
+                }
+            
+        },
+        "ALEJANDRA RODRIGUEZ PALACIO": {
+             "Asignaturas": 
+                {
+                    5.0:"MATEMATICAS BASICAS",
+                    4.5:"FISICA" ,
+                    3.0:"ASTRONOMIA" 
+                }
+            
+        },
+       "VERONICA LOPEZ BENAVIDES": {
+            "Asignaturas": 
+                {
+                    1.6:"ALGEBRA LINEAL",
+                    3.0:"CALCULO 2" ,
+                    4.0:"FISICA" 
+                }
+            
         }
     }
 }
@@ -78,35 +83,55 @@ while True:
     orden1 = int(input("¿Qué desea consultar? "))
 
     if orden1 == 1:
-        orden2 = input("¿Cuál es el nombre del estudiante? ")
-        orden2 = orden2.lower()
+        orden2 = int(input('''   Seleccione una opción de consulta
+       1 = Consulta completa
+       2 = Consultar asignaturas del grupo
+       3 = Consultar notas por grupo
+       4 = Consultar notas por asignatura'''))
+        if orden2 == 1:
+            orden50 = input("¿cual es el nombre del estudiante?")
+            orden50=orden50.upper()
+            
+            
+            for k,v in estudiantes.items():    #k=grupo     v=juan{asignatura{4.5}}
+             for estudiante, asignaturas in v.items():   #estudiante=Juan     asignaturas=asignatura{4.5. CALCULO}
+              for notas, materias in asignaturas.items():    #notas="Asignaturas"      #materias=4.5:calculo
+               if orden50 in estudiante:
+                print(f"Estudiante: {orden50} \n") 
+                for notas1, materias1 in materias.items():  #notas1=4.5 2.0          #materias1=calculo, fisica
+                 if orden50 in estudiante:     
+                  print(f" Asignatura: {materias1} - Nota: {notas1}")
+             break
+            else:
+             print(f'El estudiante {orden50} no se encuentra registrado en ningún grupo. Si desea agregarlo puede digitar el número 5. ')
 
-        for grupo in estudiantes:
-            if orden2 in estudiantes[grupo]["nombres"]:
-                print("Grupo:", grupo)
-                print("Código:", estudiantes[grupo]["nombres"][orden2]["código"], "\n"
-                      , "Asignatura 01:", estudiantes[grupo]["nombres"][orden2]["asignatura 01"], "\n"
-                      , "Asignatura 02:", estudiantes[grupo]["nombres"][orden2]["asignatura 02"], "\n"
-                      , "Asignatura 03:", estudiantes[grupo]["nombres"][orden2]["asignatura 03"], "\n")
-                break
-        else:
-            print(f'El estudiante {orden2} no se encuentra registrado en ningún grupo. Si desea agregarlo puede digitar el número 5. ')
+        elif orden2==2:
+            orden51 = input("Digite el grupo que desea consultar de la siguiente manedera: G01, G02, G03 etc")
+            asignaturas_grupo_01 = estudiantes[orden51]
+            asignaturas = []
+            for materias in asignaturas_grupo_01.values():
+             asignaturas.extend(materias['Asignaturas'].values())
+             asignaturas_unicas = list(set(asignaturas))
+            print("\n""Las asignaturas que estan cursando los estudiantes del Grupo 1 son:"+("\n")*2+"-\n- \t".join(asignaturas_unicas).lower()) #el primero no sale con guion y el guion sale alejado de la materias
+        elif orden2==3:
+            orden52=input("Digite el grupo que desea consultar, de la siguiente manera: G01, G02, G03 etc")
+            for key, valor in estudiantes[orden52].items():
+                print(f"Estudiante: {key}")
+                for nota, asignatura in valor["Asignaturas"].items():
+                 print(f"Asignatura 1: {asignatura} - Nota: {nota}")
+            
+        elif orden2==4:
+         orden53=input("Digite la asignatura que desea consultar")
+         for k,v in estudiantes.items(): #k=grupo    v=nombre{asignatura{...}}
+          for estudiante, asignaturas in v.items():     #estudiante=nombre  asignatura={asignatura{4.5:calculo}}
+           for notas, materias in asignaturas.items():    #notas="asignaturas"     materias={4.5: calculo}
+            for numero,letras in materias.items():         #numeros=todas las notas     letras= todas las asignaturas 
+             if letras==orden53 in materias.values():
+              print(f"Estudiante: {estudiante} - Nota: {numero}")
 
-    elif orden1 == 2:
-        orden14 = input("Asignaturas que cursa el: ")
-        orden14 = orden14.lower()
 
-        for grupo in estudiantes:
-            if orden14 in estudiantes[grupo]["nombres"]:
-                print(estudiantes[grupo]["nombres"][orden14]["asignatura 01"],
-                      estudiantes[grupo]["nombres"][orden14]["nota asignatura 01"]
-                      , "\n", estudiantes[grupo]["nombres"][orden14]["asignatura 02"],
-                      estudiantes[grupo]["nombres"][orden14]["nota asignatura 02"],
-                      "\n", estudiantes[grupo]["nombres"][orden14]["asignatura 03"],
-                      estudiantes[grupo]["nombres"][orden14]["nota asignatura 03"])
-                break
-        else:
-            print(f'El estudiante {orden14} no se encuentra registrado en ningún grupo. Si desea con el indicativo número 5 lo puede realizar. ')
+
+
 
     elif orden1 == 3:
         orden15 = input("Consultar código de: ")
@@ -180,4 +205,75 @@ while True:
     else:
         print("Error: Por favor, introduzca un número de opción válido (1-6).")
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#       estudiantes = {
+#     "grupo_01": {
+#         "nombres": {
+#             "juan castellanos": {"código": 101, "asignatura 01": "cálculo i", "nota asignatura 01": 2.3,
+#                                  "asignatura 02": "física", "nota asignatura 02": 4.1,
+#                                  "asignatura 03": "programación de computadores", "nota asignatura 03": 3.5},
+#             "angel riveros": {"código": 102, "asignatura 01": "cálculo ii", "nota asignatura 01": 3.0,
+#                               "asignatura 02": "materiales", "nota asignatura 02": 3.2,
+#                               "asignatura 03": "problemas ambientales", "nota asignatura 03": 4.9},
+#             "leo ayala": {"código": 103, "asignatura 01": "cálculo iii", "nota asignatura 01": 3.4,
+#                           "asignatura 02": "fundamentos de química", "nota asignatura 02": 4.0,
+#                           "asignatura 03": "gastronomía i", "nota asignatura 03": 4.7}
+#         }
+#     },
+#     "grupo_02": {
+#         "nombres": {
+#             "damian montañez": {"código": 201, "asignatura 01": "cálculo iii", "nota asignatura 01": 1.9,
+#                                 "asignatura 02": "física", "nota asignatura 02": 3.1,
+#                                 "asignatura 03": "dibujo básico", "nota asignatura 03": 3.0},
+#             "alejandra rodriguez": {"código": 202, "asignatura 01": "cálculo i", "nota asignatura 01": 3.0,
+#                                     "asignatura 02": "fundamentos de química", "nota asignatura 02": 2.8,
+#                                     "asignatura 03": "ecología", "nota asignatura 03": 4.3},
+#             "veronica lopez": {"código": 203, "asignatura 01": "matemáticas básicas", "nota asignatura 01": 3.9,
+#                                "asignatura 02": "álgebra lineal", "nota asignatura 02": 5.0,
+#                                "asignatura 03": "gastronomía ii", "nota asignatura 03": 4.0}
+#         }
+#     },
+#     "grupo_03": {
+#         "nombres": {
+#             "diego camargo": {"código": 301, "asignatura 01": "cálculo ii", "nota asignatura 01": 3.8,
+#                                "asignatura 02": "programación de computadores", "nota asignatura 02": 2.1,
+#                                "asignatura 03": "problemas ambientales", "nota asignatura 03": 4.8},
+#             "paula montenegro": {"código": 302, "asignatura 01": "matemáticas básicas",
+#                                   "nota asignatura 01": 5.0, "asignatura 02": "álgebra lineal",
+#                                   "nota asignatura 02": 3.9, "asignatura 03": "dibujo básico",
+#                                   "nota asignatura 03": 3.0},
+#             "dilan velasquez": {"código": 303, "asignatura 01": "cálculo i", "nota asignatura 01": 3.1,
+#                                 "asignatura 02": "materiales", "nota asignatura 02": 3.5,
+#                                 "asignatura 03": "ecología", "nota asignatura 03": 4.0}
+#         }
+#     },
+#     "grupo_04": {
+#         "nombres": {
+#             "maria olmos": {"código": 401, "asignatura 01": "cálculo iii", "nota asignatura 01": 2.0,
+#                             "asignatura 02": "física", "nota asignatura 02": 2.9,
+#                             "asignatura 03": "astronomía i", "nota asignatura 03": 3.4},
+#             "francisca suarez": {"código": 402, "asignatura 01": "cálculo i", "nota asignatura 01": 3.4,
+#                                  "asignatura 02": "programación de computadores", "nota asignatura 02": 4.9,
+#                                  "asignatura 03": "gastronomía i", "nota asignatura 03": 3.7},
+#             "valentina gomez": {"código": 403, "asignatura 01": "cálculo i", "nota asignatura 01": 3.2,
+#                                 "asignatura 02": "fundamentos de química", "nota asignatura 02": 4.5,
+#                                 "asignatura 03": "dibujo básico", "nota asignatura 03": 4.1}
+#         }
+#     }
+# }
 '''
