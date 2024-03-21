@@ -80,54 +80,61 @@ estudiantes={
 }
 
 while True:
-    orden1 = int(input("¿Qué desea consultar? "))
+ orden0 = int(input("Selccione la accion que desea realizar, solo los numeros son validos: "))
 
-    if orden1 == 1:
-        orden2 = int(input('''   Seleccione una opción de consulta
-       1 = Consulta completa
-       2 = Consultar asignaturas del grupo
-       3 = Consultar notas por grupo
-       4 = Consultar notas por asignatura'''))
-        if orden2 == 1:
-            orden50 = input("¿cual es el nombre del estudiante?")
-            orden50=orden50.upper()
-            
-            
-            for k,v in estudiantes.items():    #k=grupo     v=juan{asignatura{4.5}}
-             for estudiante, asignaturas in v.items():   #estudiante=Juan     asignaturas=asignatura{4.5. CALCULO}
-              for notas, materias in asignaturas.items():    #notas="Asignaturas"      #materias=4.5:calculo
-               if orden50 in estudiante:
-                print(f"Estudiante: {orden50} \n") 
-                for notas1, materias1 in materias.items():  #notas1=4.5 2.0          #materias1=calculo, fisica
-                 if orden50 in estudiante:     
-                  print(f" Asignatura: {materias1} - Nota: {notas1}")
-             break
-            else:
-             print(f'El estudiante {orden50} no se encuentra registrado en ningún grupo. Si desea agregarlo puede digitar el número 5. ')
+ if orden0 == 1:
+     os.system("cls")
+     menu1 = print("¿QUÉ DESEA CONSULTAR?", "\n", "\n",
+                   "1. Consulta completa", "\n",
+                   "2. Consultar asignatuars del curso", "\n",
+                   "3. Consultar notas por grupo", "\n",
+                   "4. Consultar notas por asignatura", "\n",
+                   "5. SALIR", "\n")
+     orden51= int(input("Seleccione la accion que desea realizar: "))
+     if orden51 == 1:
+      orden52 = input("¿Cual es el nombre del estudiante?")
+      orden52 = orden52.upper()
+      os.system("cls")
+      for k,v in js.items():                              #grupo=G01, G02         codigo_nombre=100001:{juan:{}}
+       for grupo, codigo in v.items():                    #codigo=10001           nombre_asignaturas={juan}calculo   
+        for codigo1, nombres in codigo.items():           #nombres=Juan           materia_nota={calculo: 4.2}
+         if orden52 in codigo1:
+          print(f"Estudiante: {orden52}")
+          for materia, nota in nombres.items():           #materia=calculo        nota=3.0 4.5
+           if orden52 in codigo1: 
+            print(f"Asignatura: {materia} - nota: {nota}")
 
-        elif orden2==2:
-            orden51 = input("Digite el grupo que desea consultar de la siguiente manedera: G01, G02, G03 etc")
-            asignaturas_grupo_01 = estudiantes[orden51]
-            asignaturas = []
-            for materias in asignaturas_grupo_01.values():
-             asignaturas.extend(materias['Asignaturas'].values())
-             asignaturas_unicas = list(set(asignaturas))
-            print("\n""Las asignaturas que estan cursando los estudiantes del Grupo 1 son:"+("\n")*2+"-\n- \t".join(asignaturas_unicas).lower()) #el primero no sale con guion y el guion sale alejado de la materias
-        elif orden2==3:
-            orden52=input("Digite el grupo que desea consultar, de la siguiente manera: G01, G02, G03 etc")
-            for key, valor in estudiantes[orden52].items():
-                print(f"Estudiante: {key}")
-                for nota, asignatura in valor["Asignaturas"].items():
-                 print(f"Asignatura 1: {asignatura} - Nota: {nota}")
-            
-        elif orden2==4:
-         orden53=input("Digite la asignatura que desea consultar")
-         for k,v in estudiantes.items(): #k=grupo    v=nombre{asignatura{...}}
-          for estudiante, asignaturas in v.items():     #estudiante=nombre  asignatura={asignatura{4.5:calculo}}
-           for notas, materias in asignaturas.items():    #notas="asignaturas"     materias={4.5: calculo}
-            for numero,letras in materias.items():         #numeros=todas las notas     letras= todas las asignaturas 
-             if letras==orden53 in materias.values():
-              print(f"Estudiante: {estudiante} - Nota: {numero}")
+           
+     elif orden51 == 2: 
+       orden53 = input("Digite el grupo que desea consultar de la siguiente manedera: G01, G02, G03 etc")
+       prueba = js[orden53]   #dentro de grupo 1
+       print(" \n"f"Grupo {orden53}: \n")
+       for codigo, nombres in prueba.items():
+        for llamar, asignaturas in nombres.items():
+         for apellidos, asig_not in asignaturas.items():
+          print( f"Asignatura 1: {apellidos}")
+
+     elif orden51 == 3:
+      orden54=input("Digite el grupo que desea consultar, de la siguiente manera: G01, G02, G03 etc")
+      for codigo, nombre_asig in js[orden54].items():           #codigo=10001                nombre_asig={'JUAN CASTELLANOS PEREZ': {'CALCULO 1': 4.5,    
+       for nombre, asignatura in nombre_asig.items():        #nombre=juan           asignatura={'CALCULO 1': 4.5, 'FISICA 1': 4.1,
+        print(f" Estudiante: {nombre}\n Codigo: {codigo}")
+        for materia, promedio in asignatura.items():         #materia=calculo 1       promedio=4.5 3.6 2.0                         
+         print(f"     Asignatura 1: {materia} - Nota: {promedio}")
+
+
+     elif orden51 == 4:
+       orden53=input("Digite la asignatura que desea consultar")
+       for grupo,codigo_nombre in js.items():                         #grupo=g01 g02                       codigo_nombre=codigo{juan{...}}
+        for codigo, nombre_materias in codigo_nombre.items():        #codigo=10001 10002                  nombre_materias={juan{4.5:calculo}}  
+         for nombre, materias_nota in nombre_materias.items():       #nombre=juan                         materias_nota={calculo: 4.5}     
+          for materias,nota in materias_nota.items():                #materias=todas las asignaturas      nota= todas las noats
+           if materias==orden53 in materias_nota.keys():
+            print(f" Materia: {orden53} \n"f"   Estudiante: {nombre} - Nota: {nota}")
+
+     else:
+       continue      
+
 
 
 
@@ -206,7 +213,12 @@ while True:
         print("Error: Por favor, introduzca un número de opción válido (1-6).")
 
 
-
+# __________GUARDAR___________#
+ save = json.dumps(js, indent=4)
+# print(save)
+ archivo = open("cursos.json", "w")
+ archivo.write(save)
+ archivo.close()
 
 
 
