@@ -152,6 +152,7 @@ while True:
 
 
 
+#ESTE PRIMERO DE CONSULTA POR CODIGO CREO QUE NO SIRVE PARA NADA Y ES INNECESARIO
     elif orden1 == 3:
         orden15 = input("Consultar código de: ")
         orden15 = orden15.lower()
