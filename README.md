@@ -50,6 +50,11 @@ while True:
                    "3. Consultar notas por grupo", "\n",
                    "4. Consultar notas por asignatura", "\n",
                    "0. SALIR", "\n")
+  else:
+   print("Rango no valido")
+   input("Oprima cualquier tecla para continuar") 
+   continue
+
  try:
      orden51= int(input("Seleccione la accion que desea realizar: "))
      
