@@ -34,7 +34,7 @@ while True:
                "4. Eliminar un estudiante" "\n"
                "5. SALIR" "\n"))
  
- except ValueError:
+ except:
     print("\nLas letras no son caracetres validos para este menu")
     try:
      input("\nOprimar Enter tecla para continuar\n")             
@@ -43,23 +43,23 @@ while True:
       os.system("cls")
       continue
  
- except KeyboardInterrupt:
-      print("\n Bromista")
-      try:
-        input("Oprimar Enter para continuar")
-        continue
-      except:
-       os.system("cls")
-       continue
+#  except KeyboardInterrupt:
+#       print("\n Bromista")
+#       try:
+#         input("Oprimar Enter para continuar")
+#         continue
+#       except:
+#        os.system("cls")                                           CODIGO PARA EVITAR ERRORES, SI SE QUIERO DESCRIBIR CADA ERROR, ODEJAR SOLO 1 GENERAL
+#        continue
 
- except EOFError:
-   print("\n Caracter no valido, intentelo de nuevo")
-   try:
-    input("\nOprimar cualquier tecla para continuar\n")
-    continue
-   except:
-     os.system("cls")
-     continue
+#  except EOFError:
+#    print("\n Caracter no valido, intentelo de nuevo")
+#    try:
+#     input("\nOprimar cualquier tecla para continuar\n")
+#     continue
+#    except:
+#      os.system("cls")
+#      continue
 
 
  if orden0 == 1:
@@ -75,7 +75,7 @@ while True:
       try:
        input("Oprimar Enter para volver al menu prinvipal")
        continue
-      except KeyboardInterrupt: 
+      except:  
        os.system("cls")
        continue
     
@@ -93,8 +93,8 @@ while True:
          except:
           continue
        os.system("cls")
-       for k,v in js.items():                              #grupo=G01, G02         codigo_nombre=100001:{juan:{}}
-        for codigos, nombre_asig in v.items():     #codigo=10001           nombre_asignaturas={juan}calculo
+       for k,v in js.items():                                         #grupo=G01, G02         codigo_nombre=100001:{juan:{}}
+        for codigos, nombre_asig in v.items():                        #codigo=10001           nombre_asignaturas={juan}calculo
           break      
         if orden52 in codigos:
           print(f"\nCodigo: {orden52}")
@@ -124,7 +124,7 @@ while True:
         orden53= orden53.upper()
         prueba = js[orden53]   #dentro de grupo 1       
        except:
-         input("Error de digitacion vuelva a intentarlo")
+         input("\nError de digitacion vuelva a intentarlo")
          continue
        
        print(" \n"f"Grupo {orden53}: \n")
@@ -144,12 +144,12 @@ while True:
        orden54= orden54.upper()
        intento1 = js[orden54]
       except:
-        input("Error de digitacion, intentelo nuevamente")
+        input("\nError de digitacion, intentelo nuevamente")
         continue
-      for codigo, nombre_asig in js[orden54].items():           #codigo=10001                nombre_asig={'JUAN CASTELLANOS PEREZ': {'CALCULO 1': 4.5,    
-       for nombre, asignatura in nombre_asig.items():        #nombre=juan           asignatura={'CALCULO 1': 4.5, 'FISICA 1': 4.1,
+      for codigo, nombre_asig in js[orden54].items():                         #codigo=10001                nombre_asig={'JUAN CASTELLANOS PEREZ': {'CALCULO 1': 4.5,    
+       for nombre, asignatura in nombre_asig.items():                         #nombre=juan           asignatura={'CALCULO 1': 4.5, 'FISICA 1': 4.1,
         print(f" Estudiante: {nombre}\n Codigo: {codigo}")
-        for materia, promedio in asignatura.items():         #materia=calculo 1       promedio=4.5 3.6 2.0                         
+        for materia, promedio in asignatura.items():                          #materia=calculo 1       promedio=4.5 3.6 2.0                         
          print(f"     Asignatura 1: {materia} - Nota: {promedio}")
          continue
       try:  
@@ -165,8 +165,8 @@ while True:
        orden53=orden53.upper()
        print(f"Asignatura: {orden53}")
        for grupo,codigo_nombre in js.items():                         #grupo=g01 g02                       codigo_nombre=codigo{juan{...}}
-        for codigo, nombre_materias in codigo_nombre.items():        #codigo=10001 10002                  nombre_materias={juan{4.5:calculo}}  
-         for nombre, materias_nota in nombre_materias.items():       #nombre=juan                         materias_nota={calculo: 4.5}        
+        for codigo, nombre_materias in codigo_nombre.items():         #codigo=10001 10002                  nombre_materias={juan{4.5:calculo}}  
+         for nombre, materias_nota in nombre_materias.items():        #nombre=juan                         materias_nota={calculo: 4.5}        
           for materias,nota in materias_nota.items():                 #materias=todas las asignaturas      nota= todas las noats
             if orden53 in materias:
               print(f"Nombre: {nombre} - Nota: {nota}")        
@@ -188,9 +188,36 @@ while True:
       print("Rango no valido, digite un numero entre 0 y 4")
       try:
        input("Oprimar Enter para continuar")
-      except KeyboardInterrupt: 
+      except: #KeyboardInterrupt: 
        os.system("cls")
        continue
+
+ except:
+      print(" \n0Las letras no son caracetres validos para este menu")
+      try:
+        input("Oprimar Enter para volver al menu principal")
+        continue
+      except:
+             os.system("cls")
+             continue
+      
+#  except KeyboardInterrupt:
+#       print("\n Bromista")
+#       try:
+#         input("Oprimar Enter para continuar")
+#         continue
+#       except:
+#        os.system("cls")
+#        continue
+
+#  except EOFError:
+#       print("\n Caracter no valido, vuelvalo a intentar")
+#       try:
+#        input("Oprima Enter para volver al menu principal")
+#        continue
+#       except:
+#         os.system("cls")
+#         continue
 
 
 
