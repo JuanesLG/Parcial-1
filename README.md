@@ -1,86 +1,46 @@
 # Parcial-1
 
 ```python
-from subprocess import call
+import json
+import os
 
-call('cls', shell=True)
+# Limpia la pantalla
+os.system("cls")
 
-print(
-    ("\t") * 8,
-    '''  BIENVENIDO AL SISTEMA DE NOTAS. \n
-    ¿Qué proceso desea realizar?\n  
-    Utilice los siguientes números para realizar la acción que desee:\n
-    1 = Información del estudiante\n
-    2 = Consultar asignaturas del estudiante con su nota\n
-    3 = Consultar el código de los estudiantes\n
-    4 = Eliminar estudiante\n
-    5 = Añadir estudiante\n
-    6 = Finalizar'''
-)
+# Intenta abrir y leer el archivo
+try:
+    with open("cursos.json", "r") as archivo:
+        leer = archivo.read()
+                                    # Comprueba si hay contenido antes de intentar cargar el JSON
+        if leer.strip():            # Si leer tiene contenido (no está vacío)
+            js = json.loads(leer)
+        else:
+            js = {}                 # Crea un diccionario vacío si el archivo está vacío
+except FileNotFoundError:           # Maneja el caso de que el archivo no exista
+    js = {}                         # Crea un diccionario vacío si el archivo no existe
 
-estudiantes={
-    "G01": {
-        "JUAN CASTELLANOS PEREZ": {
-            "Asignaturas": 
-                {
-                    4.5: "CALCULO 1",
-                    4.1: "FISICA 1",
-                    3.1: "PROGRAMACION DE COMPUTADORES"
-                }
-            
-        },
-        "ANGEL RIVEROS AMAYA": {
-            "Asignaturas": 
-                {
-                    4.1:"CALCULO 2" ,
-                    3.8:"ECOLOGIA" ,
-                    2.9: "FUNDAMENTOS DE QUIMICA"
-                }
-            
-        },
-        "LEO AYALA VERGARA": {
-            "Asignaturas": 
-                {
-                    3.8: "MATERIALES",
-                    4.0: "ASTRONOMIA 1",
-                    3.0: "CALCULO 2"
-                }
-            
-        }
-    },
-    "G02": {
-        "DAMIAN MONTA\u00c3\u2018AZ ROMERO": {
-            "Asignaturas": 
-                {
-                   2.9: "CALCULO 3",
-                   3.1 : "PROGRAMACION DE COMPUTADORES",
-                   4.0: "DIBUJO BASICO"
-                }
-            
-        },
-        "ALEJANDRA RODRIGUEZ PALACIO": {
-             "Asignaturas": 
-                {
-                    5.0:"MATEMATICAS BASICAS",
-                    4.5:"FISICA" ,
-                    3.0:"ASTRONOMIA" 
-                }
-            
-        },
-       "VERONICA LOPEZ BENAVIDES": {
-            "Asignaturas": 
-                {
-                    1.6:"ALGEBRA LINEAL",
-                    3.0:"CALCULO 2" ,
-                    4.0:"FISICA" 
-                }
-            
-        }
-    }
-}
+
+# ___________ABRIR____________
+
 
 while True:
- orden0 = int(input("Selccione la accion que desea realizar, solo los numeros son validos: "))
+ try:
+  os.system("cls")
+  orden0 = int(input("SELECCIONE QUÉ DESEA HACER" "\n" "\n"
+               "1. Consultar un estudiante" "\n"
+               "2. Modificar un estudiante" "\n"
+               "3. Agregar a un estudiante" "\n"
+               "4. Eliminar un estudiante" "\n"
+               "5. SALIR" "\n"))
+ except ValueError:
+   print("\nLas letras no son caracetres validos para este menu")
+   input("\nOprimar cualquier tecla para continuar\n")
+   continue
+ 
+ except KeyboardInterrupt:
+      print("\n Bromista")
+      input("\nOprimar cualquier tecla para continuar\n")
+      continue
 
  if orden0 == 1:
      os.system("cls")
@@ -89,23 +49,43 @@ while True:
                    "2. Consultar asignatuars del curso", "\n",
                    "3. Consultar notas por grupo", "\n",
                    "4. Consultar notas por asignatura", "\n",
-                   "5. SALIR", "\n")
+                   "0. SALIR", "\n")
+ try:
      orden51= int(input("Seleccione la accion que desea realizar: "))
+     
      if orden51 == 1:
-      orden52 = input("¿Cual es el nombre del estudiante?")
-      orden52 = orden52.upper()
-      os.system("cls")
-      for k,v in js.items():                              #grupo=G01, G02         codigo_nombre=100001:{juan:{}}
-       for grupo, codigo in v.items():                    #codigo=10001           nombre_asignaturas={juan}calculo   
-        for codigo1, nombres in codigo.items():           #nombres=Juan           materia_nota={calculo: 4.2}
-         if orden52 in codigo1:
-          print(f"Estudiante: {orden52}")
-          for materia, nota in nombres.items():           #materia=calculo        nota=3.0 4.5
-           if orden52 in codigo1: 
-            print(f"Asignatura: {materia} - nota: {nota}")
-
+       orden52 = input("¿Cual es el codigo del estudiante?")
+       if orden52.isdigit():
+         print("SISIS")
+       else:
+         print("\nNo son validas las letras en enta opcion \n")
+         input("Oprimar cualquier tecla para continuar")
+         continue
+       os.system("cls")
+       for k,v in js.items():                              #grupo=G01, G02         codigo_nombre=100001:{juan:{}}
+        for codigos, nombre_asig in v.items():                    #codigo=10001           nombre_asignaturas={juan}calculo   
+         if orden52 in codigos:
+          print(f"\nCodigo: {orden52}")
+          for nombre55, materia_nota in nombre_asig.items():           #nombres=Juan           materia_nota={calculo: 4.2}
+           if orden52 in codigos:
+             print(f"Estudiante: {nombre55} ")
+           for materia, notas in materia_nota.items():
+            if orden52 in codigos:
+             print(f" Asignatura: {materia} - Notas: {notas}")
+             continue
+           if orden52 in codigos:
+             print(" ")
+             input("Oprima cualquier tecla para continuar")
+             break
+          if orden52 in codigos:
+            break
+        if orden52 in codigos:
+          break
+       if orden52 not in codigos:
+         print("\nNo se encuentra ningun estudiante conectado a ese codigo \n")
            
      elif orden51 == 2: 
+       os.system("cls")
        orden53 = input("Digite el grupo que desea consultar de la siguiente manedera: G01, G02, G03 etc")
        prueba = js[orden53]   #dentro de grupo 1
        print(" \n"f"Grupo {orden53}: \n")
@@ -113,17 +93,23 @@ while True:
         for llamar, asignaturas in nombres.items():
          for apellidos, asig_not in asignaturas.items():
           print( f"Asignatura 1: {apellidos}")
-
+       orden_continuar3= input("\n Presione Enter para continuar")
+       if orden_continuar3 == " ":
+             os.system("cls")
+       continue
+  
      elif orden51 == 3:
+      os.system("cls")
       orden54=input("Digite el grupo que desea consultar, de la siguiente manera: G01, G02, G03 etc")
       for codigo, nombre_asig in js[orden54].items():           #codigo=10001                nombre_asig={'JUAN CASTELLANOS PEREZ': {'CALCULO 1': 4.5,    
        for nombre, asignatura in nombre_asig.items():        #nombre=juan           asignatura={'CALCULO 1': 4.5, 'FISICA 1': 4.1,
         print(f" Estudiante: {nombre}\n Codigo: {codigo}")
         for materia, promedio in asignatura.items():         #materia=calculo 1       promedio=4.5 3.6 2.0                         
          print(f"     Asignatura 1: {materia} - Nota: {promedio}")
-
+      continue
 
      elif orden51 == 4:
+       os.system("cls")
        orden53=input("Digite la asignatura que desea consultar")
        for grupo,codigo_nombre in js.items():                         #grupo=g01 g02                       codigo_nombre=codigo{juan{...}}
         for codigo, nombre_materias in codigo_nombre.items():        #codigo=10001 10002                  nombre_materias={juan{4.5:calculo}}  
@@ -131,9 +117,30 @@ while True:
           for materias,nota in materias_nota.items():                #materias=todas las asignaturas      nota= todas las noats
            if materias==orden53 in materias_nota.keys():
             print(f" Materia: {orden53} \n"f"   Estudiante: {nombre} - Nota: {nota}")
+   
+     elif orden51==0:
+       os.system("cls")
+       continue
 
      else:
-       continue      
+      print("Rango no valido, digite un numero entre 0 y 4")
+      orden_continuar2= input("\n Presione Enter para continuar")
+      if orden_continuar2 == " ":
+             os.system("cls")
+             continue
+
+ except ValueError:
+      print(" Las letras no son caracetres validos para este menu")
+      orden_continuar1= input("\n Presione Enter para continuar")
+      if orden_continuar1 == " ":
+             os.system("cls")
+             continue
+ except KeyboardInterrupt:
+      print("\n Bromista")
+      orden_continuar1= input("\n Presione Enter para continuar")
+      if orden_continuar1 == " ":
+             os.system("cls")
+             continue     
 
 
 
